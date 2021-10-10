@@ -1,0 +1,33 @@
+version: '3.4'
+
+services:
+  portainer:
+    container_name: portainer
+    restart: always
+    ports:
+       - "7002:8000"
+       - "7003:9000"
+    volumes:
+        - /var/run/docker.sock:/var/run/docker.sock 
+        - portainer_data:/data 
+
+  contactdb:
+    container_name: contactdb
+    environment:
+       SA_PASSWORD: 'SwN12345678'
+       ACCEPT_EULA: 'Y'
+    restart: always
+    ports:
+        - "7004:1433" 
+    #volumes:
+    #   - mssql_data:/var/opt/mssql
+    #   - mssql_user:/var/opt/sqlserver
+
+  contact.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - "ConnectionStrings:ContactConnectionString=Server=contactdb;Database=ContactDb;User Id=sa;Password=SwN12345678"
+    depends_on:
+        - contactdb
+    ports:
+      - "7005:80"

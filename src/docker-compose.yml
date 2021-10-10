@@ -1,0 +1,21 @@
+version: '3.4'
+
+
+services:
+
+  portainer:
+    image: portainer/portainer-ce
+
+  contactdb:
+    image: mcr.microsoft.com/mssql/server:2017-latest
+
+  contact.api:
+    image: ${DOCKER_REGISTRY-}contactapi
+    build:
+      context: .
+      dockerfile: Periphery/Contact.API/Dockerfile
+
+volumes:
+  portainer_data:
+  #mssql_data:
+  #mssql_user:
