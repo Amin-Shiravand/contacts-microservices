@@ -1,4 +1,4 @@
-# contacts-manager Clean Architecure sameple
+# contacts-manager Clean Architecure's sample
 
  
 ## The sample uses the following packages
