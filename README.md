@@ -1,7 +1,7 @@
 # contacts-manager Clean Architecure sameple
 
  
-##The sample uses the following packages
+## The sample uses the following packages
 
 * ASP.NET Core 5
 * [Entity Framework Core 5](https://docs.microsoft.com/en-us/ef/core/)
